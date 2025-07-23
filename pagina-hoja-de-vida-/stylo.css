@@ -1,0 +1,488 @@
+body {
+    background-color: #cdcdcd;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Contenedor principal */
+.parteprimera {
+    max-width: 1200px;
+    margin: 50px auto;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Encabezado con imagen */
+.parteUno {
+    background: url('primerafoto.jpg') center/cover no-repeat;
+    color: white;
+    height: 400px;
+    padding: 40px;
+    position: relative;
+}
+
+.titulo {
+    font-size: 2.5rem;
+    margin: 20px 0 0 30px;
+}
+
+.parra01 {
+    font-size: 1.2rem;
+    margin: 10px 30px;
+}
+
+.botoninicial {
+    color: white;
+    background-color: #1c99d1;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    margin-top: 150px;
+    margin-left: 40px;
+    font-size: 0.9rem;
+}
+
+.parrafoparte2 {
+    position: absolute;
+    bottom: 110px;
+    right: 35px;
+    font-size: 0.9rem;
+}
+
+.correo {
+    color: #1c99d1;
+    text-decoration: none;
+}
+
+/* Segunda parte */
+.partesegunda {
+    background-color: white;
+    margin-top: 2px;
+    box-shadow: 5px 5px 10px rgba(120, 119, 119, 0.449);
+    position: relative;
+}
+
+.cajassegundo {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cajaprimera, .caja2 {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.caja2 {
+    gap: 10px;
+}
+
+.car1, .car2, .car3, .car4, .car5, .car6 {
+    height: 40px;
+    padding-right: 15px;
+}
+
+.car1 {
+    border-left: solid 1px;
+    padding-left: 15px;
+}
+
+.car2 {
+    border-left: solid 1px;
+    border-right: solid 1px;
+    padding-left: 15px;
+}
+
+.car3, .car4, .car5, .car6 {
+    border-right: solid 1px;
+    justify-content: center;
+}
+
+.linea {
+    width: 2px;
+    height: 40px;
+    background-color: rgba(193, 193, 193, 0.525);
+}
+
+.casa, .persona, .hoja, .camara, .nube, .mapa {
+    color: #3498db;
+    margin-left: 8px;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: cover;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Parte Tres */
+.cajascamilo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 5px;
+}
+
+.pricamilo, .tercamilo {
+    padding: 30px;
+    background-color: #f4f4f4;
+}
+
+.seguncamilo {
+    padding: 30px;
+    background-color: #f1f1f1;
+}
+
+.linea1, .linea2camilo, .linea3, .linea4, .linea5 {
+    background-color: #1c99d1;
+}
+
+.linea1 {
+    width: 40px;
+    height: 3px;
+    margin-top: 50px;
+}
+
+.linea2camilo, .linea3 {
+    width: 40px;
+    height: 3px;
+    margin-bottom: 20px;
+}
+
+.linea4 {
+    width: 25px;
+    height: 3px;
+    background-color: #3c9dff;
+}
+
+.linea5 {
+    width: 20px;
+    height: 3px;
+    background-color: #3c9dff;
+}
+
+/* Texto y botones */
+.a, .e, .g {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.b {
+    font-size: 1.8rem;
+    color: #ccc;
+    margin: 20px 0;
+}
+
+.c {
+    margin: 20px 0 30px;
+    line-height: 1.6;
+}
+
+.f {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.d {
+    border: 2px solid #1c99d1;
+    color: #1c99d1;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+/* Redes sociales */
+.redes-sociales {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.icono-social {
+    color: #3498db;
+    font-size: 1.2rem;
+}
+
+/* Experiencia */
+.expertiseitem {
+    background: #f4f4f4;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.icon {
+    color: #ccc;
+    font-size: 30px;
+    margin-top: 3px;
+}
+
+.expertise-content strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Parte Cuatro */
+.parte4camilo {
+    padding: 50px;
+    background: white;
+}
+
+.titleresumen {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+.cartapricamilo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.cam1, .cam3, .card4, .cam5, .cam6, .cam2 {
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.cam6, .cam2 {
+    margin-top: 15px;
+}
+
+/* Educación y habilidades */
+.section-title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item, .item1, .item2 {
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.punto::marker {
+    color: #1c99d1;
+}
+
+.date {
+    color: #666;
+    margin-left: 25px;
+    font-size: 0.9rem;
+}
+
+.boton2 {
+    border: none;
+    border-radius: 3px;
+    background-color: #297edc;
+    color: white;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+}
+
+/* Intereses */
+.imagenes2 {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.music, .caballo, .paracaidas, .canasto {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #a2e0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a2e0f0;
+    font-size: 1.2rem;
+}
+
+.interests {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.9rem;
+}
+
+.skill {
+    margin-bottom: 20px;
+}
+
+.skill span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.barras {
+    display: flex;
+    gap: 5px;
+}
+
+.icon-title, .icon-edu, .icon-ski, .icon-len, .icon-musica {
+    color: #c2c2c2;
+    font-size: 30px;
+}
+@media (min-width: 300px) and (max-width: 500px) {
+  .parteUno {
+    height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .titulo {
+    font-size: 1.8rem;
+    margin: 10px 0;
+  }
+
+  .parra01 {
+    font-size: 1rem;
+    margin: 10px;
+  }
+
+  .botoninicial {
+    margin: 20px auto;
+    display: inline-block;
+    font-size: 0.9rem;
+  }
+
+  .parrafoparte2 {
+    position: static;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    top: -50px;
+    border-width: 4px;
+  }
+
+  .cajassegundo {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0;
+  }
+
+  .cajaprimera, .caja2 {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .car1, .car2, .car3, .car4, .car5, .car6 {
+    border: none !important;
+    padding: 5px 0;
+  }
+
+  .linea {
+    display: none;
+  }
+
+  .cajascamilo, .cartapricamilo {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .imagenes2, .interests {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .d {
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  .redes-sociales {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 1000px) {
+  .titulo {
+    font-size: 2rem;
+  }
+
+  .parra01 {
+    font-size: 1.1rem;
+  }
+
+  .botoninicial {
+    margin-left: 20px;
+    font-size: 0.85rem;
+  }
+
+  .cajassegundo {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .cajaprimera, .caja2 {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cajascamilo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cartapricamilo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .imagenes2, .interests {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    top: -40px;
+  }
+}
+@media (min-width: 1001px) and (max-width: 1200px) {
+  .titulo {
+    font-size: 2.2rem;
+  }
+
+  .botoninicial {
+    font-size: 1rem;
+  }
+
+  .cajassegundo {
+    justify-content: space-between;
+  }
+
+  .cajascamilo {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cartapricamilo {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .avatar {
+    width: 140px;
+    height: 140px;
+  }
+}

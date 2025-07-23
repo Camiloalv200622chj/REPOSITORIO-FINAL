@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DotBike - Bicicletas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+   <!-- Barra superior -->
+    <div class="barra-superior">
+        <div class="contenedor-barra">
+            <div class="moneda-idioma">
+                <span>$ USD</span>
+                <span>English</span>
+            </div>
+            <div class="enlaces-cuenta">
+                <a href="#">My Account</a>
+                <a href="#">Wish List (0)</a>
+                <a href="#">Shopping Cart</a>
+                <a href="#">Checkout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Encabezado -->
+    <header class="encabezado">
+        <div class="contenedor-encabezado">
+            <div class="logo">
+                <h1>dotbike</h1>
+            </div>
+            <div class="info-contacto">
+                <div class="telefono">
+                    <i class="fas fa-phone"></i>
+                    <span>CALL US: +90754488545 32</span>
+                </div>
+                <div class="email">
+                    <i class="fas fa-envelope"></i>
+                    <span>E-MAIL: dotbike@gmail.com</span>
+                </div>
+            </div>
+            <div class="carrito-usuario">
+                <div class="iconos-usuario">
+                    <i class="fas fa-user"></i>
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="total-carrito">
+                    <span>$0.00</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav class="navegacion">
+        <div class="contenedor-nav">
+            <ul class="menu-principal">
+                <li><a href="#"><i class="fas fa-home"></i></a></li>
+                <li><a href="#">BIKES & FRAMES</a></li>
+                <li><a href="#">BIKE PARTS</a></li>
+                <li><a href="#">TIRES & TUBES</a></li>
+                <li><a href="#">SHOES & PEDALS</a></li>
+                <li><a href="#">CLOTHING</a></li>
+                <li><a href="#">ACCESSORIES</a></li>
+            </ul>
+            <div class="buscador">
+                <input type="text" placeholder="Search">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="migas-pan">
+        <div class="contenedor">
+            <span>Home > Products > Bikes & Frames</span>
+        </div>
+    </div>
+
+
+    <!-- Contenido principal -->
+    <main class="contenido-principal">
+        <div class="contenedor">
+            <div class="seccion-producto" style="align-items: flex-start;">
+                <!-- Imagen del producto -->
+                <div class="imagen-producto">
+                    <img src="bici1.png" alt="Dot Bike Euro Mountain Bike">
+                    <div class="miniaturas">
+                        <img src="casco.jpg" alt="Miniatura 1">
+                        <img src="pedales.jpg" alt="Miniatura 2">
+                        <img src="plato.jpg" alt="Miniatura 3">
+                        <img src="sillin.jpg" alt="Miniatura 4">
+                    </div>
+                </div>
+
+                <!-- Información del producto -->
+                <div class="info-producto">
+                    <h2>Dot Bike Euro Mountain Bike</h2>
+                    <div class="precio">$350.00</div>
+                    <div class="estrellas">★★★★★ (17)</div>
+                    <div class="cantidad-compra">
+                        <label>Qty:</label>
+                        <input type="number" value="1" min="1">
+                        <button class="btn-agregar">Add to cart</button>
+                    </div>
+                    <div class="pestanas">
+                        <button class="pestana activa">Description</button>
+                        <button class="pestana">Review</button>
+                        <button class="pestana">More Info</button>
+                    </div>
+                    <div class="descripcion">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci consequatur quidem modi rem unde cupiditate labore magnam quo numquam officiis maxime rerum dolorum natus suscipit, explicabo voluptate soluta accusantium dignissimos.</p>
+                    </div>
+                    <div class="redes-sociales">
+                        <span>Like</span>
+                        <span>Share</span>
+                        <span>Google+</span>
+                        <span>Pin It</span>
+                    </div>
+
+                    <!-- MUEVE AQUÍ los productos relacionados -->
+                    <section class="productos-relacionados" style="margin-top: 30px;">
+                        <h2 class="productoscamilo">RELATED PRODUCTS</h2>
+                        <div class="productos-grid">
+                            <!-- 6 productos -->
+                            <div class="producto-card">
+                                <div class="etiqueta-descuento">20% OFF</div>
+                                <img src="bici2.png">
+                                <h3>Dot Bike Classic MR868</h3>
+                                <div class="estrellas">★★★★☆</div>
+                                <div class="precios">
+                                    <span class="precio-original">$300.00</span>
+                                    <span class="precio-oferta">$210.00</span>
+                                </div>
+                            </div>
+                            <div class="producto-card">
+                                <div class="etiqueta-descuento">20% OFF</div>
+                                <img src="bici3.jpg">
+                                <h3>Dot Bike Express MR868</h3>
+                                <div class="estrellas">★★★★★</div>
+                                <div class="precios">
+                                    <span class="precio-original">$300.00</span>
+                                    <span class="precio-oferta">$260.00</span>
+                                </div>
+                            </div>
+                            <div class="producto-card">
+                                <div class="etiqueta-descuento">20% OFF</div>
+                                <img src="bici4.jpg">
+                                <h3>Dot Bike Ladies MR868</h3>
+                                <div class="estrellas">★★★★☆</div>
+                                <div class="precios">
+                                    <span class="precio-original">$400.00</span>
+                                    <span class="precio-oferta">$200.00</span>
+                                </div>
+                            </div>
+                            <div class="producto-card">
+                                <img src="bici5.jpg">
+                                <h3>Dot Bike Express MR868</h3>
+                                <div class="estrellas">★★★★☆</div>
+                                <div class="precios">
+                                    <span class="precio-normal">$210.00</span>
+                                </div>
+                            </div>
+                            <div class="producto-card">
+                                <img src="bici6.jpg">
+                                <h3>Dot Bike Classic MR868</h3>
+                                <div class="estrellas">★★★★★</div>
+                                <div class="precios">
+                                    <span class="precio-normal">$550.00</span>
+                                </div>
+                            </div>
+                            <div class="producto-card">
+                                <img src="bici7.jpg">
+                                <h3>Dot Bike Modern MR868</h3>
+                                <div class="estrellas">★★★★☆</div>
+                                <div class="precios">
+                                    <span class="precio-normal">$1100.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                
+
+                <!-- Filtros laterales -->
+                <div class="filtros-laterales">
+                   <!-- Filtros laterales -->
+                <div class="filtros-laterales">
+                    <div class="rango-precio">
+                        <h3>MIN / MAX PRICE</h3>
+                        <div class="precio-inputs">
+                            <input type="text" value="$10" class="precio-min">
+                            <input type="text" value="$1000" class="precio-max">
+                        </div>
+                    </div>
+
+                    <div class="categorias">
+                        <h3>CATEGORIES</h3>
+                        <ul>
+                            <li><a href="#">Road Bike (15)</a></li>
+                            <li><a href="#">Mountain Bike (26)</a></li>
+                            <li><a href="#">Folding Bike (10)</a></li>
+                            <li><a href="#" class="activo">Children Bike (21)</a></li>
+                            <li><a href="#">Fixies Gear (10)</a></li>
+                            <li><a href="#">Tricycle (14)</a></li>
+                            <li><a href="#">Accessories (28)</a></li>
+                            <li><a href="#">Cycling Components (5)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="color">
+                        <h3>COLOR</h3>
+                        <div class="colores">
+                            <span class="color-item" style="background: #ddd;">Reflection (24)</span>
+                            <span class="color-item" style="background: #fff;">White (12)</span>
+                            <span class="color-item" style="background: #8bc34a;">Green-Sea (10)</span>
+                            <span class="color-item" style="background: #000;">Belize Hole (21)</span>
+                            <span class="color-item" style="background: #e91e63;">Pomegranate (9)</span>
+                            <span class="color-item" style="background: #ff9800;">Orange (23)</span>
+                            <span class="color-item" style="background: #333;">Black (5)</span>
+                        </div>
+                    </div>
+
+                    <div class="tamano">
+                        <h3>SIZE</h3>
+                        <div class="tamanos">
+                            <label><input type="checkbox"> S (23)</label>
+                            <label><input type="checkbox" checked> M (25)</label>
+                            <label><input type="checkbox"> L (41)</label>
+                            <label><input type="checkbox"> XL (26)</label>
+                        </div>
+                    </div>
+
+                    <div class="disponibilidad">
+                        <h3>AVAILABILITY</h3>
+                        <div class="disponibilidad-opciones">
+                            <label><input type="radio" name="disponibilidad"> Not available (7)</label>
+                            <label><input type="radio" name="disponibilidad" checked> In stock (26)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="contenedor">
+            <div class="info-footer">
+                <div class="columna">
+                    <div class="logo-footer">
+                        <h3>dotbike</h3>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus ligula quis eget dolor aliquam molestie auctor lorem.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam accumsan ligula quis eget dolor. Aliquam molestie auctor lorem efficitur. Cras vulputate rhoncus fermentum.</p>
+                    <div class="redes-footer">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-google-plus"></i></a>
+                    </div>
+                </div>
+
+                <div class="columna">
+                    <h4>MAINMENU</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="columna">
+                    <h4>MY ACCOUNT</h4>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Wish List (0)</a></li>
+                        <li><a href="#">Shopping Cart</a></li>
+                        <li><a href="#">Checkout</a></li>
+                    </ul>
+                </div>
+
+                <div class="columna">
+                    <h4>NEWSLETTER</h4>
+                    <p>Subscribe to the Greetwaves mailing list to receive updates on new arrivals, special offers and other discount information.</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Write your email here">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pie-inferior">
+            <div class="contenedor">
+                <div class="derechos">
+                    <p>Copyright dotbikethemes.com | Design by Rafael Amin | All rights reserved</p>
+                </div>
+                <div class="tarjetas-pago">
+                    <img src="visa.png" alt="Visa">
+                    <img src="mastercard.png" alt="Mastercard">
+                    <img src="american.png" alt="American Express">
+                    <img src="paypal.jpg" alt="PayPal">
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
