@@ -1,0 +1,95 @@
+body {
+  background-image: url('calcu.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculadora {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  width: 350px;
+  text-align: center;
+}
+
+.calculadora h2 {
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.campos input {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.operaciones {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.operaciones label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #444;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#resultado {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+@media (max-width: 768px) {
+  .calculadora {
+    width: 90%;
+    padding: 30px 20px;
+  }
+
+  .campos input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .operaciones label {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  #resultado {
+    font-size: 18px;
+  }
+}
