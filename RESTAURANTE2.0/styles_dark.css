@@ -1,12 +1,12 @@
 body {
   font-family: 'Poppins', sans-serif;
-  background: url(IMAGEN.jpg);
+  background: url("IMAGEN.jpg") no-repeat center center;
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #f1f1f1;
-  height: 100vh;
+  min-height: 100vh;
 }
+
 
 .btn-gradient {
   background: linear-gradient(135deg, #ff416c, #ff4b2b);
@@ -115,6 +115,9 @@ body {
 @media (max-width: 768px) {
   body {
     height: auto; 
+    background-attachment: scroll; 
+    background-position: top center; 
+    background-size: contain;
   }
 
   .btn-gradient {
@@ -152,4 +155,5 @@ body {
     border-radius: 8px;
     font-size: 12px;
   }
+
 }
