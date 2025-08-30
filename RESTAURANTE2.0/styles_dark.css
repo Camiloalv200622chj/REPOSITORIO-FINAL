@@ -117,7 +117,7 @@ body {
     height: auto; 
     background-attachment: scroll; 
     background-position: top center; 
-    background-size: contain;
+    
   }
 
   .btn-gradient {
@@ -157,3 +157,4 @@ body {
   }
 
 }
+
