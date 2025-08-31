@@ -1,0 +1,134 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+      background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80") no-repeat center center fixed;
+  background-size: cover;
+    padding: 20px;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenedor principal */
+.detalle {
+    max-width: 900px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Imagen con efecto */
+.detalle img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s ease;
+}
+.detalle img:hover {
+    transform: scale(1.03);
+}
+
+/* Título */
+h1 {
+    margin-top: 0;
+    font-size: 32px;
+    text-align: center;
+    color: #222;
+    letter-spacing: 1px;
+    animation: slideDown 1s ease;
+}
+
+/* Descripción */
+.detalle p {
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Bloques de información */
+.info, .seccion {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ffffff 40%, #f8f8f8 100%);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.info:hover, .seccion:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Subtítulos */
+.seccion h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+    color: #0077b6;
+    border-left: 5px solid #0077b6;
+    padding-left: 10px;
+}
+
+/* Listas */
+ul {
+    padding-left: 25px;
+}
+ul li {
+    margin: 6px 0;
+}
+
+/* Botón volver */
+.volver {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 0 auto;
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #0077b6, #00b4d8);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 119, 182, 0.4);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+.volver:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #00b4d8, #0077b6);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slideDown {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .detalle {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .volver {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+

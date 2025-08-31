@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lugares famosos para visitar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1 class="titulo">🌍 Lugares Famosos para Visitar</h1>
+
+  <div class="slider" aria-label="Galería de lugares">
+    <button class="nav prev" aria-label="Anterior">‹</button>
+
+    <div class="viewport">
+      <div id="track" class="track" role="list"></div>
+
+      <!-- Loader mientras carga -->
+      <div id="loader" class="loader" aria-hidden="true">
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <button class="nav next" aria-label="Siguiente">›</button>
+  </div>
+
+  <script>
+    const track = document.getElementById("track");
+    const loader = document.getElementById("loader");
+    let lugares = [];
+    let currentIndex = 0;
+
+    function showCard(index) {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    fetch("lugares.json")
+      .then(res => res.json())
+      .then(data => {
+        lugares = data;
+        loader.style.display = "none";
+
+        lugares.forEach(lugar => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <img src="${lugar.url_imagen}" alt="${lugar.nombre}" />
+            <div class="info">
+              <h3>${lugar.nombre}</h3>
+              <p class="pais">${lugar.pais}</p>
+              <p class="ciudad">${lugar.ciudad}</p>
+            </div>
+          `;
+          card.addEventListener("click", () => {
+            localStorage.setItem("lugarSeleccionado", JSON.stringify(lugar));
+            window.location.href = "detalle.html";
+          });
+          track.appendChild(card);
+        });
+
+        showCard(currentIndex);
+      });
+
+    document.querySelector(".next").addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % lugares.length;
+      showCard(currentIndex);
+    });
+
+    document.querySelector(".prev").addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + lugares.length) % lugares.length;
+      showCard(currentIndex);
+    });
+  </script>
+</body>
+</html>
+

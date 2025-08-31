@@ -1,0 +1,117 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:sans-serif;
+  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80") no-repeat center center fixed;
+  background-size: cover;
+  color:#fff;
+  height:100vh;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.titulo{
+  margin-bottom:20px;
+  font-size:32px;
+  font-weight:800;
+  text-align:center;
+  text-shadow:2px 2px 8px rgba(0,0,0,.7);
+}
+
+.slider{
+  position:relative;
+  width:100%;
+  max-width:800px;
+  overflow:hidden;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+.viewport{position:relative;width:100%;overflow:hidden}
+.track{
+  display:flex;
+  transition:transform 0.6s ease;
+  width:100%;
+}
+.card{
+  min-width:100%;
+  height:480px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#000;
+}
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:20px;
+}
+.info{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  background:linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,0));
+  padding:20px;
+  text-align:center;
+}
+.info h3{
+  font-size:28px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  text-shadow:2px 2px 8px rgba(0,0,0,.8);
+}
+.pais{
+  color:#00d4ff;
+  font-size:20px;
+  font-weight:600;
+  text-shadow:1px 1px 6px rgba(0,0,0,.8);
+}
+.ciudad{
+  color:#ffb400;
+  font-size:18px;
+  font-style:italic;
+  text-shadow:1px 1px 6px rgba(0,0,0,.8);
+}
+
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.6);
+  border:none;
+  color:#fff;
+  font-size:40px;
+  padding:10px 18px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:10;
+  transition:.3s;
+}
+.nav:hover{background:rgba(0,0,0,.9)}
+.prev{left:10px}
+.next{right:10px}
+
+/* Loader */
+.loader{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.7);
+}
+.spinner{
+  width:50px;height:50px;
+  border:6px solid #fff;
+  border-top-color:transparent;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+

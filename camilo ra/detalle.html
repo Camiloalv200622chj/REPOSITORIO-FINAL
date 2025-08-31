@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Lugar</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="detalle" id="detalle"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const contenedor = document.getElementById("detalle");
+            const data = JSON.parse(localStorage.getItem("lugarSeleccionado"));
+
+            if (!data) {
+                contenedor.innerHTML = "<p>No se encontró la información del lugar.</p>";
+                return;
+            }
+
+            contenedor.style.background = `linear-gradient(to bottom right, ${data.categoria.colorPrimario}, ${data.categoria.colorSecundario})`;
+
+            const img = document.createElement("img");
+            img.src = data.url_imagen;
+            img.alt = data.nombre;
+
+            const titulo = document.createElement("h1");
+            titulo.textContent = data.nombre;
+
+            const descripcion = document.createElement("p");
+            descripcion.textContent = data.descripcion;
+
+            const info = document.createElement("div");
+            info.className = "info";
+            info.innerHTML = `
+                <p><strong>Ciudad:</strong> ${data.ciudad}</p>
+                <p><strong>País:</strong> ${data.pais}</p>
+                <p><strong>Coordenadas:</strong> ${data.coordenadas.latitud}, ${data.coordenadas.longitud}</p>
+            `;
+
+            const datosInteresantes = document.createElement("div");
+            datosInteresantes.className = "seccion";
+            datosInteresantes.innerHTML = "<h3>Datos interesantes:</h3><ul>" +
+                data.datosInteresantes.map(d => `<li><strong>${d.titulo}:</strong> ${d.valor}</li>`).join('') +
+                "</ul>";
+
+            const actividades = document.createElement("div");
+            actividades.className = "seccion";
+            actividades.innerHTML = "<h3>Actividades recomendadas:</h3><ul>" +
+                data.actividadesRecomendadas.map(a => `<li>${a}</li>`).join('') +
+                "</ul>";
+
+            const categoria = document.createElement("div");
+            categoria.className = "seccion";
+            categoria.innerHTML = `
+                <h3>Categoría:</h3>
+                <p><strong>${data.categoria.nombre}</strong></p>
+            `;
+
+            const volver = document.createElement("a");
+            volver.href = "index.html";
+            volver.className = "volver";
+            volver.textContent = "← Volver";
+
+            contenedor.appendChild(img);
+            contenedor.appendChild(titulo);
+            contenedor.appendChild(descripcion);
+            contenedor.appendChild(info);
+            contenedor.appendChild(datosInteresantes);
+            contenedor.appendChild(actividades);
+            contenedor.appendChild(categoria);
+            contenedor.appendChild(volver);
+        });
+    </script>
+</body>
+</html>
+
