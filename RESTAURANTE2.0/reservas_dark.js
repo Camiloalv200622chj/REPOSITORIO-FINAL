@@ -224,13 +224,16 @@ function eliminarReserva(i) {
     cancelButtonText: 'No, mantener'
   }).then((result) => {
     if (result.isConfirmed) {
+      // Liberar mesa si estaba ocupada
       let mesa = listaMesas.find(m => m.nombreMesa === reserva.mesaSeleccionada);
       if (mesa && reserva.estadoReserva !== "Finalizada" && reserva.estadoReserva !== "Cancelada") {
         mesa.estadoMesa = "disponible";
       }
 
+      // Eliminar reserva del array
       listaReservas.splice(i, 1);
 
+      // Guardar cambios
       localStorage.setItem("listaMesas", JSON.stringify(listaMesas));
       guardarListaReservas();
       mostrarReservas();
@@ -282,18 +285,6 @@ document.getElementById("formularioReserva").addEventListener("submit", (e) => {
       icon: 'error',
       title: 'Cantidad inválida',
       text: 'La cantidad de personas debe ser mayor a 0.',
-      confirmButtonColor: '#dc3545'
-    });
-    return;
-  }
-
-  // ✅ Nueva validación: capacidad de la mesa
-  let mesaSeleccionadaObj = listaMesas.find(m => m.nombreMesa === mesaSeleccionada);
-  if (mesaSeleccionadaObj && cantidadPersonas > mesaSeleccionadaObj.capacidadMesa) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Capacidad excedida',
-      text: `La mesa ${mesaSeleccionada} tiene capacidad para ${mesaSeleccionadaObj.capacidadMesa} personas como máximo.`,
       confirmButtonColor: '#dc3545'
     });
     return;
@@ -406,4 +397,3 @@ document.addEventListener("DOMContentLoaded", () => {
     new bootstrap.Modal(document.getElementById("modalReserva")).show();
   }
 });
-
