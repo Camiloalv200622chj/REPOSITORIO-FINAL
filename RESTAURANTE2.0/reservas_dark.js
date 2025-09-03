@@ -69,6 +69,7 @@ function mostrarReservas() {
             <button class="btn btn-success btn-sm" onclick="pagarReserva(${i})">💳 Pagar</button>
             <button class="btn btn-warning btn-sm" onclick="editarReserva(${i})">✏️ Editar</button>
             <button class="btn btn-danger btn-sm" onclick="cancelarReserva(${i})">❌ Cancelar</button>
+            <button class="btn btn-outline-light btn-sm" onclick="eliminarReserva(${i})">🗑️ Eliminar</button>
           </div>
         </div>
       </div>
@@ -194,6 +195,55 @@ function cancelarReserva(i) {
         html: `<strong>${reserva.nombreCliente}</strong><br>Mesa ${reserva.mesaSeleccionada} liberada`,
         confirmButtonColor: '#dc3545',
         timer: 3000,
+        timerProgressBar: true
+      });
+    }
+  });
+}
+
+function eliminarReserva(i) {
+  const reserva = listaReservas[i];
+
+  Swal.fire({
+    title: '🗑️ Eliminar Reserva',
+    html: `
+      <div class="text-start">
+        <strong>Cliente:</strong> ${reserva.nombreCliente}<br>
+        <strong>Mesa:</strong> ${reserva.mesaSeleccionada}<br>
+        <strong>Fecha:</strong> ${reserva.fechaReserva}<br>
+        <strong>Hora:</strong> ${reserva.horaReserva}
+      </div>
+      <br>
+      <strong>¿Deseas eliminar esta reserva de forma permanente?</strong>
+    `,
+    icon: 'error',
+    showCancelButton: true,
+    confirmButtonColor: '#dc3545',
+    cancelButtonColor: '#6c757d',
+    confirmButtonText: '🗑️ Sí, eliminar',
+    cancelButtonText: 'No, mantener'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Liberar mesa si estaba ocupada
+      let mesa = listaMesas.find(m => m.nombreMesa === reserva.mesaSeleccionada);
+      if (mesa && reserva.estadoReserva !== "Finalizada" && reserva.estadoReserva !== "Cancelada") {
+        mesa.estadoMesa = "disponible";
+      }
+
+      // Eliminar reserva del array
+      listaReservas.splice(i, 1);
+
+      // Guardar cambios
+      localStorage.setItem("listaMesas", JSON.stringify(listaMesas));
+      guardarListaReservas();
+      mostrarReservas();
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Reserva Eliminada',
+        text: `La reserva de ${reserva.nombreCliente} fue eliminada correctamente`,
+        confirmButtonColor: '#28a745',
+        timer: 2000,
         timerProgressBar: true
       });
     }
