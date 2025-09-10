@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles_dark.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-calendar-check"></i> Reservas
+      </a>
+      <a href="mesas_dark.html" class="btn btn-outline-light">Ver Mesas</a>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <h2 class="text-white">Lista de Reservas</h2>
+
+    <div class="filtros-container bg-light p-3 rounded d-flex gap-3 align-items-end">
+      <div>
+        <label for="filtroFecha" class="form-label">Filtrar por Fecha:</label>
+        <input type="date" id="filtroFecha" class="form-control">
+      </div>
+      <div>
+        <label for="filtroEstado" class="form-label">Filtrar por Estado:</label>
+        <select id="filtroEstado" class="form-select">
+          <option value="">Todos</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="Confirmada">Confirmada</option>
+          <option value="Cancelada">Cancelada</option>
+          <option value="Finalizada">Finalizada</option>
+        </select>
+      </div>
+      <div class="ms-auto">
+        <button class="btn btn-danger" id="btnAgregarReserva">+ Crear Reserva</button>
+      </div>
+    </div>
+
+    <div class="row mt-3" id="contenedorReservas"></div>
+  </div>
+
+  <div class="modal fade" id="modalReserva" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark text-white">
+        <form id="formularioReserva">
+          <div class="modal-header">
+            <h5 class="modal-title">Reserva</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="indiceReserva">
+
+            <div class="mb-3">
+              <label>Cliente</label>
+              <input type="text" class="form-control" id="inputNombreCliente" required>
+            </div>
+            <div class="mb-3">
+              <label>Fecha</label>
+              <input type="date" class="form-control" id="inputFechaReserva" required>
+            </div>
+            <div class="mb-3">
+              <label>Hora</label>
+              <input type="time" class="form-control" id="inputHoraReserva" required>
+            </div>
+            <div class="mb-3">
+              <label>Personas</label>
+              <input type="number" class="form-control" id="inputCantidadPersonas" required>
+            </div>
+            <div class="mb-3">
+              <label>Mesa</label>
+              <select class="form-select" id="selectMesaDisponible"></select>
+            </div>
+            <div class="mb-3">
+              <label>Ocasión</label>
+              <select id="selectOcasión" class="form-control">
+                <option value="">Seleccione una ocasión</option>
+                <option value="Cumpleaños">Cumpleaños</option>
+                <option value="Aniversario">Aniversario</option>
+                <option value="Negocios">Negocios</option>
+                <option value="Cena Romántica">Cena Romántica</option>
+                <option value="Graduación">Graduación</option>
+                <option value="Reunión Familiar">Reunión Familiar</option>
+                <option value="Fiesta Infantil">Fiesta Infantil</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label>Notas</label>
+              <textarea class="form-control" id="inputNotasReserva"></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label>Estado</label>
+              <select class="form-select" id="selectEstadoReserva">
+                <option value="Pendiente">Pendiente</option>
+                <option value="Confirmada">Confirmada</option>
+                <option value="Cancelada">Cancelada</option>
+                <option value="Finalizada">Finalizada</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="reservas_dark.js"></script>
+</body>
+
+</html>
+
