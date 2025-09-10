@@ -1,18 +1,5 @@
-
-
 let listaReservas = JSON.parse(localStorage.getItem("listaReservas")) || [];
 let listaMesas = JSON.parse(localStorage.getItem("listaMesas")) || [];
-
-const duracionOcasionHoras = {
-  "Cumpleaños": 3,
-  "Aniversario": 3,
-  "Negocios": 2,
-  "Cena Romántica": 2,
-  "Otro": 2,
-  "Graduación": 3,
-  "Reunión Familiar": 3,
-  "Fiesta Infantil": 4
-};
 
 const imagenesOcasion = {
   "Cumpleaños": "cumpleaños.jpg",
@@ -48,11 +35,17 @@ function verificarReservasVencidas() {
   const ahora = new Date();
 
   listaReservas.forEach((reserva) => {
+    const inicio = new Date(`${reserva.fechaReserva}T${reserva.horaReserva}`);
+    const fin = new Date(`${reserva.fechaReserva}T${reserva.horaFin}`);
+    let mesa = listaMesas.find(m => m.nombreMesa === reserva.mesaSeleccionada);
+
     if (reserva.estadoReserva === "Pendiente") {
-      const fin = new Date(`${reserva.fechaReserva}T${reserva.horaFin}`);
+      if (ahora >= inicio && ahora < fin) {
+        reserva.estadoReserva = "Confirmada";
+        if (mesa) mesa.estadoMesa = "ocupada";
+      }
       if (ahora >= fin) {
         reserva.estadoReserva = "Finalizada";
-        let mesa = listaMesas.find(m => m.nombreMesa === reserva.mesaSeleccionada);
         if (mesa) mesa.estadoMesa = "disponible";
       }
     }
@@ -63,7 +56,10 @@ function verificarReservasVencidas() {
   mostrarReservas();
 }
 
-setInterval(verificarReservasVencidas, 60000);
+setInterval(() => {
+  verificarReservasVencidas();
+  mostrarReservas();
+}, 60000);
 
 function cargarMesasDisponibles() {
   const select = document.getElementById("selectMesaDisponible");
@@ -104,6 +100,7 @@ function mostrarReservas() {
           ${reserva.ocasion ? `<p class="text-light">🎉 Ocasión: ${reserva.ocasion}</p>` : ""}
           ${imagenOcasion ? `<div class="text-center"><img src="${imagenOcasion}" alt="${reserva.ocasion}" style="width:100%; max-height:200px; object-fit:contain;" /></div>` : ""}
           ${reserva.notasReserva ? `<p class="text-light">📝 ${reserva.notasReserva}</p>` : ""}
+          <p class="mb-3">Duración: ${reserva.duracionHoras}h</p>
           <p class="mb-3">Estado: <strong class="${estadoColor}">${reserva.estadoReserva}</strong></p>
           
           <div class="btn-group-actions">
@@ -159,8 +156,8 @@ document.getElementById("formularioReserva").addEventListener("submit", (e) => {
   const mesaSeleccionada = document.getElementById("selectMesaDisponible").value;
   const ocasion = document.getElementById("selectOcasión").value;
   const notasReserva = document.getElementById("inputNotasReserva").value.trim();
+  const duracionHoras = parseInt(document.getElementById("inputDuracion").value, 10);
 
-  const duracionHoras = duracionOcasionHoras[ocasion] || 2;
   let inicioNueva = new Date(`${fechaReserva}T${horaReserva}`);
   let finNueva = new Date(inicioNueva.getTime() + duracionHoras * 60 * 60 * 1000);
 
@@ -186,8 +183,6 @@ document.getElementById("formularioReserva").addEventListener("submit", (e) => {
     listaReservas[idx] = { ...listaReservas[idx], ...nuevaReserva };
   } else {
     listaReservas.push(nuevaReserva);
-    let mesa = listaMesas.find(m => m.nombreMesa === mesaSeleccionada);
-    if (mesa) mesa.estadoMesa = "ocupada";
   }
 
   localStorage.setItem("listaMesas", JSON.stringify(listaMesas));
@@ -206,6 +201,7 @@ function editarReserva(i) {
   document.getElementById("inputCantidadPersonas").value = reserva.cantidadPersonas;
   document.getElementById("selectOcasión").value = reserva.ocasion || "";
   document.getElementById("inputNotasReserva").value = reserva.notasReserva || "";
+  document.getElementById("inputDuracion").value = reserva.duracionHoras;
 
   cargarMesasDisponibles();
   document.getElementById("selectMesaDisponible").value = reserva.mesaSeleccionada;
@@ -224,7 +220,3 @@ document.addEventListener("DOMContentLoaded", () => {
   mostrarReservas();
   verificarReservasVencidas();
 });
-
-
-
-
