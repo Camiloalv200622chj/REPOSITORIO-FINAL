@@ -1,0 +1,155 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: url(IMAGEN.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #f1f1f1;
+  height: 100vh;
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.btn-gradient:hover {
+  opacity: 0.85;
+  transform: scale(1.03);
+}
+
+.tarjeta-reserva {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  transition: transform 0.2s;
+}
+.tarjeta-reserva:hover {
+  transform: scale(1.02);
+}
+
+.tarjeta-mesa-dark {
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 500;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+.estado-disponible {
+    background: linear-gradient(135deg, #00c853, #64dd17);
+}
+.estado-ocupada {
+    background: linear-gradient(135deg, #2962ff, #448aff);
+}
+.estado-deshabilitada {
+    background: linear-gradient(135deg, #424242, #616161);
+}
+
+.tarjeta-mesa-dark:hover {
+    transform: translateY(-4px);
+    transition: transform 0.2s ease;
+}
+    .tarjeta-reserva {
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .filtros-container {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 15px;
+      background-color: #616161 !important;
+    }
+.modal-content {
+    background-color: #fff !important;  
+    color: #212529 !important;          
+}
+
+.modal-content .form-control,
+.modal-content select,
+.modal-content textarea {
+    color: #212529 !important;       
+    background-color: #fff !important;  
+    border: 1px solid #ced4da;         
+}
+
+.modal-content .form-control::placeholder {
+    color: #6c757d !important;         
+}
+
+@media (min-width: 1025px) {
+  .tarjeta-reserva {
+    max-width: 600px;
+    margin: 0 auto; 
+  }
+
+  .filtros-container {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    background-position: top; 
+  }
+
+  .filtros-container {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tarjeta-mesa-dark {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    height: auto; 
+  }
+
+  .btn-gradient {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .tarjeta-reserva {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .filtros-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tarjeta-mesa-dark {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-gradient {
+    width: 100%; 
+    text-align: center;
+  }
+
+  .tarjeta-reserva {
+    margin-bottom: 10px;
+  }
+
+  .tarjeta-mesa-dark {
+    border-radius: 8px;
+    font-size: 12px;
+  }
+}
