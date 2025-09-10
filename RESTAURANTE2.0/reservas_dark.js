@@ -1,5 +1,3 @@
-
-
 let listaReservas = JSON.parse(localStorage.getItem("listaReservas")) || [];
 let listaMesas = JSON.parse(localStorage.getItem("listaMesas")) || [];
 
@@ -223,4 +221,20 @@ document.getElementById("btnAgregarReserva").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
   mostrarReservas();
   verificarReservasVencidas();
+
+  // ✅ Detectar si viene una mesa desde la URL
+  const params = new URLSearchParams(window.location.search);
+  const mesaSeleccionada = params.get("mesa");
+
+  if (mesaSeleccionada) {
+    document.getElementById("formularioReserva").reset();
+    document.getElementById("indiceReserva").value = "";
+
+    cargarMesasDisponibles();
+    document.getElementById("selectMesaDisponible").value = mesaSeleccionada;
+
+    new bootstrap.Modal(document.getElementById("modalReserva")).show();
+  }
 });
+
+
