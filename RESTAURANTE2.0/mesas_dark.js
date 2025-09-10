@@ -68,6 +68,14 @@ document.getElementById("formularioMesa").addEventListener("submit", (e) => {
   guardarListaMesas();
   mostrarMesas();
   bootstrap.Modal.getInstance(document.getElementById("modalMesa")).hide();
+
+  Swal.fire({
+    icon: "success",
+    title: "Éxito",
+    text: "Mesa guardada correctamente",
+    timer: 1500,
+    showConfirmButton: false
+  });
 });
 
 function editarMesa(i) {
@@ -80,12 +88,30 @@ function editarMesa(i) {
 }
 
 function eliminarMesa(i) {
-  if (confirm("¿Seguro que deseas eliminar esta mesa?")) {
-    listaMesas.splice(i, 1);
-    guardarListaMesas();
-    mostrarMesas();
-  }
+  Swal.fire({
+    title: "¿Estás seguro?",
+    text: "Esta acción eliminará la mesa.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      listaMesas.splice(i, 1);
+      guardarListaMesas();
+      mostrarMesas();
+
+      Swal.fire({
+        icon: "success",
+        title: "Eliminado",
+        text: "La mesa fue eliminada correctamente",
+        timer: 1500,
+        showConfirmButton: false
+      });
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", mostrarMesas);
-
