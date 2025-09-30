@@ -16,6 +16,15 @@ function guardarListaReservas() {
   localStorage.setItem("listaReservas", JSON.stringify(listaReservas));
 }
 
+function mostrarAlerta(titulo, mensaje) {
+  const label = document.getElementById("modalAlertaLabel");
+  const body  = document.getElementById("modalAlertaMensaje");
+  const modal = document.getElementById("modalAlerta");
+  if (label) label.textContent = titulo || "Aviso";
+  if (body)  body.textContent  = mensaje || "";
+  if (modal && window.bootstrap?.Modal) new bootstrap.Modal(modal).show();
+}
+
 function hayChoqueDeHorario(nueva, idxEditar = null) {
   return listaReservas.some((reserva, i) => {
     if (i === idxEditar) return false; 
@@ -24,8 +33,8 @@ function hayChoqueDeHorario(nueva, idxEditar = null) {
 
     const inicioExistente = new Date(`${reserva.fechaReserva}T${reserva.horaReserva}`);
     const finExistente = new Date(`${reserva.fechaReserva}T${reserva.horaFin}`);
-    const inicioNueva = new Date(`${nueva.fechaReserva}T${nueva.horaReserva}`);
-    const finNueva = new Date(`${nueva.fechaReserva}T${nueva.horaFin}`);
+    const inicioNueva   = new Date(`${nueva.fechaReserva}T${nueva.horaReserva}`);
+    const finNueva      = new Date(`${nueva.fechaReserva}T${nueva.horaFin}`);
 
     return (inicioNueva < finExistente && finNueva > inicioExistente);
   });
@@ -61,16 +70,23 @@ setInterval(() => {
   mostrarReservas();
 }, 60000);
 
-function cargarMesasDisponibles() {
+
+function cargarMesasDisponibles(selectedMesa = null) {
   const select = document.getElementById("selectMesaDisponible");
   select.innerHTML = "";
 
-  listaMesas.forEach(m => {
-    let option = document.createElement("option");
-    option.value = m.nombreMesa;
-    option.textContent = `${m.nombreMesa} - Capacidad ${m.capacidadMesa}`;
-    select.appendChild(option);
-  });
+  listaMesas
+    .filter(m => {
+      if (selectedMesa && m.nombreMesa === selectedMesa) return true; 
+      return (m.estadoMesa || "").toLowerCase() !== "deshabilitada";
+    })
+    .forEach(m => {
+      let option = document.createElement("option");
+      option.value = m.nombreMesa;
+      const desh = (m.estadoMesa || "").toLowerCase() === "deshabilitada";
+      option.textContent = `${m.nombreMesa} - Capacidad ${m.capacidadMesa}${desh ? " (deshabilitada)" : ""}`;
+      select.appendChild(option);
+    });
 }
 
 function mostrarReservas() {
@@ -85,7 +101,8 @@ function mostrarReservas() {
       "Pendiente": "text-warning",
       "Confirmada": "text-info",
       "Cancelada": "text-danger",
-      "Finalizada": "text-success"
+      "Finalizada": "text-success",
+      "Expirada por tiempo": "text-secondary"
     }[reserva.estadoReserva] || "text-white";
 
     let imagenOcasion = reserva.ocasion ? imagenesOcasion[reserva.ocasion] || "" : "";
@@ -146,7 +163,12 @@ function eliminarReserva(i) {
 }
 
 document.getElementById("formularioReserva").addEventListener("submit", (e) => {
-  e.preventDefault();
+  const form = e.currentTarget;
+  e.preventDefault(); 
+  if (!form.checkValidity()) {
+    mostrarAlerta("Campos obligatorios", "Revisa los campos del formulario.");
+    return;
+  }
 
   const idx = document.getElementById("indiceReserva").value;
   const nombreCliente = document.getElementById("inputNombreCliente").value.trim();
@@ -161,6 +183,12 @@ document.getElementById("formularioReserva").addEventListener("submit", (e) => {
   let inicioNueva = new Date(`${fechaReserva}T${horaReserva}`);
   let finNueva = new Date(inicioNueva.getTime() + duracionHoras * 60 * 60 * 1000);
 
+  const grupoEstadoReserva = document.getElementById("grupoEstadoReserva");
+  const selectEstadoReserva = document.getElementById("selectEstadoReserva");
+  const estadoSeleccionado = (grupoEstadoReserva && !grupoEstadoReserva.classList.contains("d-none"))
+    ? (selectEstadoReserva.value || "Pendiente")
+    : "Pendiente";
+
   const nuevaReserva = {
     nombreCliente,
     fechaReserva,
@@ -169,13 +197,13 @@ document.getElementById("formularioReserva").addEventListener("submit", (e) => {
     mesaSeleccionada,
     ocasion,
     notasReserva,
-    estadoReserva: "Pendiente",
+    estadoReserva: estadoSeleccionado,
     duracionHoras,
     horaFin: finNueva.toTimeString().slice(0,5)
   };
 
   if (hayChoqueDeHorario(nuevaReserva, idx ? parseInt(idx) : null)) {
-    Swal.fire({ icon: 'error', title: 'Horario no disponible', text: 'La mesa ya tiene otra reserva en ese horario.' });
+    mostrarAlerta("Horario no disponible", "La mesa ya tiene otra reserva en ese horario.");
     return;
   }
 
@@ -203,20 +231,66 @@ function editarReserva(i) {
   document.getElementById("inputNotasReserva").value = reserva.notasReserva || "";
   document.getElementById("inputDuracion").value = reserva.duracionHoras;
 
-  cargarMesasDisponibles();
+  cargarMesasDisponibles(reserva.mesaSeleccionada);
   document.getElementById("selectMesaDisponible").value = reserva.mesaSeleccionada;
+
+  const grupoEstadoReserva = document.getElementById("grupoEstadoReserva");
+  const selectEstadoReserva = document.getElementById("selectEstadoReserva");
+  if (grupoEstadoReserva && selectEstadoReserva) {
+    grupoEstadoReserva.classList.remove("d-none");
+    selectEstadoReserva.value = reserva.estadoReserva || "Pendiente";
+  }
 
   new bootstrap.Modal(document.getElementById("modalReserva")).show();
 }
 
 document.getElementById("btnAgregarReserva").addEventListener("click", () => {
-  document.getElementById("formularioReserva").reset();
+  const form = document.getElementById("formularioReserva");
+  form.reset();
   document.getElementById("indiceReserva").value = "";
+
   cargarMesasDisponibles();
+
+  const grupoEstadoReserva = document.getElementById("grupoEstadoReserva");
+  const selectEstadoReserva = document.getElementById("selectEstadoReserva");
+  if (grupoEstadoReserva && selectEstadoReserva) {
+    grupoEstadoReserva.classList.add("d-none");
+    selectEstadoReserva.value = "Pendiente";
+  }
+
   new bootstrap.Modal(document.getElementById("modalReserva")).show();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
   mostrarReservas();
   verificarReservasVencidas();
+
+  const mesaPreseleccionada = localStorage.getItem("mesaParaReservar");
+  if (mesaPreseleccionada) {
+    localStorage.removeItem("mesaParaReservar");
+
+    const form = document.getElementById("formularioReserva");
+    form.reset();
+    document.getElementById("indiceReserva").value = "";
+
+    cargarMesasDisponibles();
+    const select = document.getElementById("selectMesaDisponible");
+    const existe = Array.from(select.options).some(op => op.value === mesaPreseleccionada);
+
+    if (existe) {
+      select.value = mesaPreseleccionada;
+    } else {
+      mostrarAlerta("Mesa no disponible", `La mesa "${mesaPreseleccionada}" está deshabilitada. Por favor, elige otra.`);
+    }
+
+    const grupoEstadoReserva = document.getElementById("grupoEstadoReserva");
+    const selectEstadoReserva = document.getElementById("selectEstadoReserva");
+    if (grupoEstadoReserva && selectEstadoReserva) {
+      grupoEstadoReserva.classList.add("d-none");
+      selectEstadoReserva.value = "Pendiente";
+    }
+
+    new bootstrap.Modal(document.getElementById("modalReserva")).show();
+  }
 });
+
