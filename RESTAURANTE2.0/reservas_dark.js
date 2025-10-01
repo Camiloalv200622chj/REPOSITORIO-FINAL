@@ -70,7 +70,6 @@ setInterval(() => {
   mostrarReservas();
 }, 60000);
 
-
 function cargarMesasDisponibles(selectedMesa = null) {
   const select = document.getElementById("selectMesaDisponible");
   select.innerHTML = "";
@@ -179,6 +178,13 @@ document.getElementById("formularioReserva").addEventListener("submit", (e) => {
   const ocasion = document.getElementById("selectOcasión").value;
   const notasReserva = document.getElementById("inputNotasReserva").value.trim();
   const duracionHoras = parseInt(document.getElementById("inputDuracion").value, 10);
+
+  // 🔹 Validación de capacidad
+  const mesa = listaMesas.find(m => m.nombreMesa === mesaSeleccionada);
+  if (mesa && cantidadPersonas > mesa.capacidadMesa) {
+    mostrarAlerta("Capacidad excedida", `La mesa "${mesaSeleccionada}" solo permite hasta ${mesa.capacidadMesa} personas.`);
+    return;
+  }
 
   let inicioNueva = new Date(`${fechaReserva}T${horaReserva}`);
   let finNueva = new Date(inicioNueva.getTime() + duracionHoras * 60 * 60 * 1000);
