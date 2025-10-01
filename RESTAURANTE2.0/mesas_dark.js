@@ -119,6 +119,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const capacidadMesa = parseInt(inputCapacidad.value, 10);
       const ubicacionMesa = inputUbicacion.value.trim();
 
+      if (!ubicacionMesa) {
+        mostrarAlerta("Campo vacío", "La ubicación de la mesa no puede estar vacía.");
+        inputUbicacion.classList.add("is-invalid");
+        return;
+      } else {
+        inputUbicacion.classList.remove("is-invalid");
+      }
+
+      if (isNaN(capacidadMesa) || capacidadMesa <= 0) {
+        mostrarAlerta("Capacidad inválida", "La capacidad debe ser un número mayor que 0.");
+        inputCapacidad.classList.add("is-invalid");
+        return;
+      } else {
+        inputCapacidad.classList.remove("is-invalid");
+      }
+
       if (idx === "") {
         const nuevaMesa = {
           nombreMesa: `Mesa ${listaMesas.length + 1}`,
