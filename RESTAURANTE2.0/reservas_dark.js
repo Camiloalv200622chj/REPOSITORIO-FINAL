@@ -92,44 +92,57 @@ function mostrarReservas() {
   const contenedor = document.getElementById("contenedorReservas");
   contenedor.innerHTML = "";
 
-  listaReservas.forEach((reserva, i) => {
-    let div = document.createElement("div");
-    div.classList.add("col-md-4");
+  const filtroFecha = document.getElementById("filtroFecha")?.value;
+  const filtroEstado = document.getElementById("filtroEstado")?.value;
 
-    let estadoColor = {
-      "Pendiente": "text-warning",
-      "Confirmada": "text-info",
-      "Cancelada": "text-danger",
-      "Finalizada": "text-success",
-      "Expirada por tiempo": "text-secondary"
-    }[reserva.estadoReserva] || "text-white";
+  listaReservas
+    .filter(reserva => {
+      if (filtroFecha && reserva.fechaReserva !== filtroFecha) return false;
+      if (filtroEstado && filtroEstado !== "Todos" && reserva.estadoReserva !== filtroEstado) return false;
+      return true;
+    })
+    .forEach((reserva, i) => {
+      let div = document.createElement("div");
+      div.classList.add("col-md-4");
 
-    let imagenOcasion = reserva.ocasion ? imagenesOcasion[reserva.ocasion] || "" : "";
+      let estadoColor = {
+        "Pendiente": "text-warning",
+        "Confirmada": "text-info",
+        "Cancelada": "text-danger",
+        "Finalizada": "text-success",
+        "Expirada por tiempo": "text-secondary",
+        "No show": "text-muted"
+      }[reserva.estadoReserva] || "text-white";
 
-    div.innerHTML = `
-      <div class="tarjeta-reserva">
-        <div class="card-body">
-          <h5 class="text-white">👤 ${reserva.nombreCliente}</h5>
-          <p class="text-light">📅 ${reserva.fechaReserva} ⏰ ${reserva.horaReserva} - ${reserva.horaFin}</p>
-          <p class="text-light">👥 ${reserva.cantidadPersonas} personas</p>
-          <p class="text-light">🍽️ Mesa: ${reserva.mesaSeleccionada}</p>
-          ${reserva.ocasion ? `<p class="text-light">🎉 Ocasión: ${reserva.ocasion}</p>` : ""}
-          ${imagenOcasion ? `<div class="text-center"><img src="${imagenOcasion}" alt="${reserva.ocasion}" style="width:100%; max-height:200px; object-fit:contain;" /></div>` : ""}
-          ${reserva.notasReserva ? `<p class="text-light">📝 ${reserva.notasReserva}</p>` : ""}
-          <p class="mb-3">Duración: ${reserva.duracionHoras}h</p>
-          <p class="mb-3">Estado: <strong class="${estadoColor}">${reserva.estadoReserva}</strong></p>
-          
-          <div class="btn-group-actions">
-            <button class="btn btn-success btn-sm" onclick="pagarReserva(${i})">💳 Pagar</button>
-            <button class="btn btn-warning btn-sm" onclick="editarReserva(${i})">✏️ Editar</button>
-            <button class="btn btn-danger btn-sm" onclick="cancelarReserva(${i})">❌ Cancelar</button>
-            <button class="btn btn-outline-danger btn-sm" onclick="eliminarReserva(${i})">🗑️ Eliminar</button>
+      let imagenOcasion = reserva.ocasion ? imagenesOcasion[reserva.ocasion] || "" : "";
+
+      // 🔹 Deshabilitar botones si el estado ya no permite acciones
+      const disabled = ["Finalizada", "Cancelada", "No show"].includes(reserva.estadoReserva) ? "disabled" : "";
+
+      div.innerHTML = `
+        <div class="tarjeta-reserva">
+          <div class="card-body">
+            <h5 class="text-white">👤 ${reserva.nombreCliente}</h5>
+            <p class="text-light">📅 ${reserva.fechaReserva} ⏰ ${reserva.horaReserva} - ${reserva.horaFin}</p>
+            <p class="text-light">👥 ${reserva.cantidadPersonas} personas</p>
+            <p class="text-light">🍽️ Mesa: ${reserva.mesaSeleccionada}</p>
+            ${reserva.ocasion ? `<p class="text-light">🎉 Ocasión: ${reserva.ocasion}</p>` : ""}
+            ${imagenOcasion ? `<div class="text-center"><img src="${imagenOcasion}" alt="${reserva.ocasion}" style="width:100%; max-height:200px; object-fit:contain;" /></div>` : ""}
+            ${reserva.notasReserva ? `<p class="text-light">📝 ${reserva.notasReserva}</p>` : ""}
+            <p class="mb-3">Duración: ${reserva.duracionHoras}h</p>
+            <p class="mb-3">Estado: <strong class="${estadoColor}">${reserva.estadoReserva}</strong></p>
+            
+            <div class="btn-group-actions">
+              <button class="btn btn-success btn-sm" onclick="pagarReserva(${i})" ${disabled}>💳 Pagar</button>
+              <button class="btn btn-warning btn-sm" onclick="editarReserva(${i})" ${disabled}>✏️ Editar</button>
+              <button class="btn btn-danger btn-sm" onclick="cancelarReserva(${i})" ${disabled}>❌ Cancelar</button>
+              <button class="btn btn-outline-danger btn-sm" onclick="eliminarReserva(${i})" ${disabled}>🗑️ Eliminar</button>
+            </div>
           </div>
         </div>
-      </div>
-    `;
-    contenedor.appendChild(div);
-  });
+      `;
+      contenedor.appendChild(div);
+    });
 }
 
 function pagarReserva(i) {
@@ -179,7 +192,6 @@ document.getElementById("formularioReserva").addEventListener("submit", (e) => {
   const notasReserva = document.getElementById("inputNotasReserva").value.trim();
   const duracionHoras = parseInt(document.getElementById("inputDuracion").value, 10);
 
-  // 🔹 Validación de capacidad
   const mesa = listaMesas.find(m => m.nombreMesa === mesaSeleccionada);
   if (mesa && cantidadPersonas > mesa.capacidadMesa) {
     mostrarAlerta("Capacidad excedida", `La mesa "${mesaSeleccionada}" solo permite hasta ${mesa.capacidadMesa} personas.`);
@@ -298,5 +310,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     new bootstrap.Modal(document.getElementById("modalReserva")).show();
   }
+
+  document.getElementById("filtroFecha")?.addEventListener("change", mostrarReservas);
+  document.getElementById("filtroEstado")?.addEventListener("change", mostrarReservas);
 });
 
