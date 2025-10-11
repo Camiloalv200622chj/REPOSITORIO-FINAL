@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Witcher - Wild Hunt</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 🎥 Video de fondo -->
+  <video autoplay muted loop id="bg-video">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <!-- Overlay oscuro sobre el video -->
+  <div class="bg-overlay"></div>
+  
+  <!-- Partículas flotantes -->
+  <div class="particles" id="particles"></div>
+
+  <!-- 🏰 Menú principal -->
+  <div class="container" id="main-menu">
+    <div class="logo-container">
+      <img src="logo.png" alt="The Witcher Wild Hunt" class="logo">
+    </div>
+    
+    <button class="btn" id="play-btn">
+      <span class="btn-text">JUGAR AHORA</span>
+    </button>
+  </div>
+
+  <!-- 📖 Menú del juego (SIN SINOPSIS) -->
+  <div class="menu oculto" id="game-menu">
+    <h2 class="menu-title">MENÚ PRINCIPAL</h2>
+    <ul>
+      <li><button class="menu-btn" id="nueva-partida">Nueva Partida</button></li>
+      <li><button class="menu-btn">Cargar Juego</button></li>
+      <li><button class="menu-btn">Opciones</button></li>
+      <li><button class="menu-btn salir" id="volver">Volver</button></li>
+    </ul>
+  </div>
+
+ <!-- 📜 PANTALLA DE CARGA CON SINOPSIS -->
+<div class="loading-screen oculto" id="loading-screen">
+  <div class="loading-content">
+    <div class="loading-logo-container">
+      <img src="logo.png" alt="The Witcher" class="loading-logo">
+      <div class="loading-ring"></div>
+    </div>
+    
+    <div class="story-container">
+      <p class="story-text" id="story-text"></p>
+      <div class="cursor-blink"></div>
+    </div>
+    
+    <div class="loading-bar-container">
+      <div class="loading-bar" id="loading-bar"></div>
+    </div>
+    
+    <p class="loading-hint">Cargando tu destino...</p>
+  </div>
+</div>
+
+  <!-- ⚔️ MENÚ DE SELECCIÓN DE FACCIÓN -->
+  <div class="faction-selection oculto" id="faction-menu">
+    <h2 class="faction-title-main">ELIGE TU CAMINO</h2>
+    
+    <div class="faction-choice-container">
+      <!-- LADO DE LOS HÉROES -->
+      <div class="faction-card heroes-card" id="heroes-choice">
+        <div class="faction-overlay"></div>
+        <div class="faction-glow heroes-glow"></div>
+        
+        <div class="faction-content">
+          <div class="faction-icon-large">⚔️</div>
+          <h3 class="faction-name">HÉROES</h3>
+          <p class="faction-subtitle">Defensores del Continente</p>
+          
+          <div class="faction-description">
+            <p>Lucha junto a los nobles guerreros, hechiceros poderosos y cazadores legendarios. La luz guía tu espada.</p>
+          </div>
+          
+          <div class="faction-stats">
+            <div class="stat-item">
+              <span class="stat-icon">👑</span>
+              <span class="stat-label">Honor</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">✨</span>
+              <span class="stat-label">Justicia</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">🛡️</span>
+              <span class="stat-label">Protección</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faction-cta">SELECCIONAR</div>
+      </div>
+
+      <!-- LADO DE LOS ANTAGONISTAS -->
+      <div class="faction-card villains-card" id="villains-choice">
+        <div class="faction-overlay"></div>
+        <div class="faction-glow villains-glow"></div>
+        
+        <div class="faction-content">
+          <div class="faction-icon-large">☠️</div>
+          <h3 class="faction-name">ANTAGONISTAS</h3>
+          <p class="faction-subtitle">Fuerzas de la Oscuridad</p>
+          
+          <div class="faction-description">
+            <p>Abraza el poder de las sombras, domina la magia oscura y siembra el terror. La oscuridad es tu aliada.</p>
+          </div>
+          
+          <div class="faction-stats">
+            <div class="stat-item">
+              <span class="stat-icon">🔥</span>
+              <span class="stat-label">Poder</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">⚡</span>
+              <span class="stat-label">Dominación</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">💀</span>
+              <span class="stat-label">Destrucción</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faction-cta">SELECCIONAR</div>
+      </div>
+    </div>
+
+    <button class="back-small" id="back-from-faction">← Volver</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

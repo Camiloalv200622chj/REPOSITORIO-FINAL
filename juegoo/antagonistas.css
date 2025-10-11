@@ -1,0 +1,132 @@
+ @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at center, #0a0a0a, #000);
+  color: #ff3333;
+  font-family: 'Cinzel', serif;
+  overflow: hidden;
+}
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ff3333;
+  z-index: 999;
+}
+
+.spinner {
+  width: 70px;
+  height: 70px;
+  border: 5px solid #222;
+  border-top: 5px solid #ff0000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.villains-scene {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.villains-scene.show {
+  opacity: 1;
+}
+
+.scene-title {
+  position: absolute;
+  top: 15px;
+  width: 100%;
+  text-align: center;
+  font-size: 2.8rem;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px #ff0000;
+  animation: pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  from { text-shadow: 0 0 10px #ff0000, 0 0 30px #800000; }
+  to { text-shadow: 0 0 25px #ff0000, 0 0 60px #ff3333; }
+}
+
+.villain {
+  width: 18%;
+  height: 60%;
+  position: relative;
+  transition: transform 0.7s ease, filter 0.5s;
+}
+
+.villain iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  filter: brightness(0.6);
+  transition: filter 0.5s, transform 0.6s;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+}
+
+.villain:hover iframe {
+  filter: brightness(1);
+  transform: scale(1.2);
+  box-shadow: 0 0 50px rgba(255, 0, 0, 0.8);
+  z-index: 10;
+}
+
+.villain::after {
+  content: attr(data-name) " — " attr(data-skill);
+  position: absolute;
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 10, 10, 0.85);
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #ff0000;
+  font-size: 1rem;
+  opacity: 0;
+  transition: all 0.6s ease;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 0 15px #ff0000;
+}
+
+.villain:hover::after {
+  bottom: -90px;
+  opacity: 1;
+}
+
+body::before, body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.1), transparent 70%);
+  animation: fog 10s infinite alternate ease-in-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes fog {
+  0% { transform: scale(1) translateX(0); opacity: 0.5; }
+  100% { transform: scale(1.3) translateX(50px); opacity: 0.8; }
+}
+
+.hidden { display: none; } 
