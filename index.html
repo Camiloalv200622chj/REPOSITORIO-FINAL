@@ -3,72 +3,478 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <title>Camilo Alvarez | Desarrollador Web</title>
+  <link rel="stylesheet" href="estilo.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="fondo"></div>
+  
+  <!-- Fondo animado -->
+  <div class="background-gradient"></div>
+  <div class="grid-background"></div>
+  
+  <!-- Partículas flotantes -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
 
-  <header>
-    <h1>CAMILO ALVAREZ</h1>
-    <p>Portafolio de trabajos realizados en formacion</p>
-  </header>
-
-  <main>
-    <section class="proyectos">
-      <h2>Mis Proyectos</h2>
-      <div class="galeria">
-
-        <div class="tarjeta">
-          <h3>Proyecto 1</h3>
-          <p>Sitio de ventas HTML Y CSS</p>
-          <a href="./pag bici/index.html" target="_blank">Ver código</a>
-        </div>
-
-        <div class="tarjeta">
-          <h3>Proyecto 2</h3>
-          <p>Hoja de vida HTML Y CSS</p>
-          <a href="./pagina-hoja-de-vida-/index.html" target="_blank">Ver código</a>
-        </div>
-
-        <div class="tarjeta">
-          <h3>Proyecto 3</h3>
-          <p>Pagina "QUIEN SOY" HTML Y CSS</p>
-          <a href="./pagina-quien-soy-/index.html" target="_blank">Ver código</a>
-        </div>
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Disponible para proyectos
+      </div>
+      
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="title-line">Hola, soy</span>
+          <span class="title-name">Camilo Alvarez</span>
+          <span class="title-gradient">Desarrollador Web</span>
+        </h1>
         
-        <div class="tarjeta">
-          <h3>Proyecto 4</h3>
-          <p>Calculadora</p>
-          <a href="./calculadora prueba/index.html" target="_blank">Ver código</a>
-        </div>
+        <p class="hero-description">
+          Transformo ideas en experiencias digitales únicas. Especializado en crear 
+          interfaces modernas, funcionales y optimizadas que generan impacto.
+        </p>
         
-         <div class="tarjeta">
-          <h3>Proyecto 5</h3>
-          <p>Lugares</p>
-          <a href="./camilo ra/index.html" target="_blank">Ver código</a>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">7+</div>
+            <div class="stat-label">Proyectos</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Dedicación</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number">SENA</div>
+            <div class="stat-label">Formación</div>
+          </div>
         </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="visual-circle circle-1"></div>
+        <div class="visual-circle circle-2"></div>
+        <div class="visual-circle circle-3"></div>
+        <div class="code-window">
+          <div class="window-header">
+            <div class="window-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="window-title">portfolio.jsx</div>
+          </div>
+          <div class="window-content">
+            <code>
+              <span class="code-keyword">const</span> <span class="code-var">developer</span> = {
+              <br>&nbsp;&nbsp;name: <span class="code-string">'Camilo'</span>,
+              <br>&nbsp;&nbsp;skills: [<span class="code-string">'HTML'</span>, <span class="code-string">'CSS'</span>, <span class="code-string">'JS'</span>],
+              <br>&nbsp;&nbsp;passion: <span class="code-string">'∞'</span>
+              <br>};
+            </code>
+          </div>
+        </div>
+      </div>
+    </header>
 
-         <div class="tarjeta">
-          <h3>Proyecto 6</h3>
-          <p>Restaurante</p>
-            <a href="./RESTAURANTE2.0/mesas_dark.html" target="_blank">Ver código</a>
-        </div>
-         <div class="tarjeta">
-          <h3>Proyecto 7</h3>
-          <p>Juego</p>
-            <a href="./juegoo/index.html" target="_blank">Ver código</a>
-        </div>
+    <!-- Projects Section -->
+    <section class="projects">
+      <div class="section-header">
+        <div class="section-tag">// Portfolio</div>
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <p class="section-subtitle">
+          Cada proyecto representa un desafío superado y una oportunidad de aprendizaje
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        
+        <!-- Proyecto 1 -->
+        <article class="project-card featured">
+          <div class="project-header">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <span class="project-number">01</span>
+          </div>
+          
+          <div class="project-content">
+            <h3 class="project-title">E-Commerce de Bicicletas</h3>
+            <p class="project-description">
+              Plataforma de ventas completa con catálogo interactivo, diseño responsive 
+              y experiencia de usuario optimizada para maximizar conversiones.
+            </p>
+            
+            <div class="project-tech">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">Responsive</span>
+            </div>
+          </div>
+          
+          <a href="./pag bici/index.html" target="_blank" class="project-link">
+            Ver Proyecto
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          
+          <div class="project-glow"></div>
+        </article>
+
+        <!-- Proyecto 2 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            <span class="project-number">02</span>
+          </div>
+          
+          <div class="project-content">
+            <h3 class="project-title">CV Digital Interactivo</h3>
+            <p class="project-description">
+              Currículum vitae digital moderno que destaca experiencia y habilidades 
+              con un diseño profesional e impactante.
+            </p>
+            
+            <div class="project-tech">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">UI/UX</span>
+            </div>
+          </div>
+          
+          <a href="./pagina-hoja-de-vida-/index.html" target="_blank" class="project-link">
+            Ver Proyecto
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          
+          <div class="project-glow"></div>
+        </article>
+
+        <!-- Proyecto 3 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <span class="project-number">03</span>
+          </div>
+          
+          <div class="project-content">
+            <h3 class="project-title">Página Personal</h3>
+            <p class="project-description">
+              Sitio web "Quién Soy" con narrativa visual que presenta objetivos, 
+              intereses y visión profesional de manera creativa.
+            </p>
+            
+            <div class="project-tech">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">Design</span>
+            </div>
+          </div>
+          
+          <a href="./pagina-quien-soy-/index.html" target="_blank" class="project-link">
+            Ver Proyecto
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          
+          <div class="project-glow"></div>
+        </article>
+
+        <!-- Proyecto 4 -->
+        <article class="project-card featured">
+          <div class="project-header">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M3 9h18M9 21V9"/>
+              </svg>
+            </div>
+            <span class="project-number">04</span>
+          </div>
+          
+          <div class="project-content">
+            <h3 class="project-title">Calculadora Avanzada</h3>
+            <p class="project-description">
+              Aplicación web funcional con operaciones matemáticas completas, 
+              interfaz intuitiva y diseño glassmorphism moderno.
+            </p>
+            
+            <div class="project-tech">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+          
+          <a href="./calculadora prueba/index.html" target="_blank" class="project-link">
+            Ver Proyecto
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          
+          <div class="project-glow"></div>
+        </article>
+
+        <!-- Proyecto 5 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <span class="project-number">05</span>
+          </div>
+          
+          <div class="project-content">
+            <h3 class="project-title">Guía Turística</h3>
+            <p class="project-description">
+              Portal informativo de lugares de interés con galerías visuales, 
+              navegación fluida y diseño atractivo para viajeros.
+            </p>
+            
+            <div class="project-tech">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">Gallery</span>
+            </div>
+          </div>
+          
+          <a href="./camilo ra/index.html" target="_blank" class="project-link">
+            Ver Proyecto
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          
+          <div class="project-glow"></div>
+        </article>
+
+        <!-- Proyecto 6 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <span class="project-number">06</span>
+          </div>
+          
+          <div class="project-content">
+            <h3 class="project-title">Sistema Restaurante</h3>
+            <p class="project-description">
+              Aplicación de gestión de mesas con modo oscuro, interfaz táctil 
+              optimizada y funcionalidades de reserva en tiempo real.
+            </p>
+            
+            <div class="project-tech">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+          
+          <a href="./RESTAURANTE2.0/mesas_dark.html" target="_blank" class="project-link">
+            Ver Proyecto
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          
+          <div class="project-glow"></div>
+        </article>
+
+        <!-- Proyecto 7 -->
+        <article class="project-card featured">
+          <div class="project-header">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <span class="project-number">07</span>
+          </div>
+          
+          <div class="project-content">
+            <h3 class="project-title">Juego Interactivo</h3>
+            <p class="project-description">
+              Videojuego web con mecánicas interactivas, animaciones fluidas 
+              y lógica de programación avanzada para entretenimiento.
+            </p>
+            
+            <div class="project-tech">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+          
+          <a href="./juegoo/index.html" target="_blank" class="project-link">
+            Ver Proyecto
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          
+          <div class="project-glow"></div>
+        </article>
 
       </div>
     </section>
-  </main>
-  <footer>
-    <p>Contacto: camiloalvarezsena22@gmail.com</p>
-    <P> 3134218588</P>
-    <P>CENTRO REGIONAL SENA</P>
-  </footer>
+
+    <!-- Skills Section -->
+    <section class="skills">
+      <div class="section-header">
+        <div class="section-tag">// Habilidades</div>
+        <h2 class="section-title">Stack Tecnológico</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon html-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 18.178l-4.62-1.256-.328-3.544h2.27l.158 1.844 2.52.667 2.52-.667.26-2.866H6.96l-.635-6.678h11.35l-.227 2.21H8.822l.204 2.256h8.217l-.624 6.778L12 18.178zM3 2h18l-1.623 18L12 22l-7.377-2L3 2z"/>
+            </svg>
+          </div>
+          <h3>HTML5</h3>
+          <p>Estructura semántica y accesible</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon css-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4.192 3.143h15.615l-1.42 16.034-6.404 1.812-6.369-1.813L4.192 3.143zM16.9 6.424l-9.8-.002.158 1.949 7.529.002-.189 2.02H9.66l.179 1.913h4.597l-.272 2.62-2.164.598-2.197-.603-.141-1.569h-1.94l.216 2.867L12 17.484l3.995-1.137.905-9.923z"/>
+            </svg>
+          </div>
+          <h3>CSS3</h3>
+          <p>Diseños modernos y responsivos</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon js-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 3h18v18H3V3zm16.525 13.707c-.131-.821-.666-1.511-2.252-2.155-.552-.259-1.165-.438-1.349-.854-.068-.248-.078-.382-.034-.529.113-.484.687-.629 1.137-.495.293.09.563.315.732.676.775-.507.775-.507 1.316-.844-.203-.314-.304-.451-.439-.586-.473-.528-1.103-.798-2.126-.775l-.528.067c-.507.124-.991.395-1.283.754-.855.968-.611 2.648.693 3.342 1.282.771 3.161.949 3.405 1.678.238.895-.276 1.562-1.385 1.841-.635.145-1.524.074-2.088-.489-.475-.424-.568-.644-.794-1.041l-1.365.782c.155.366.306.589.56.925.816.951 2.851 1.351 4.547.796 1.368-.463 2.398-1.617 2.485-3.292zM10.279 9.125c.886 0 1.529.007 2.364.02.832.012 1.591.018 2.117.018.334 0 .642-.004.968-.018.004.563-.028 1.108-.088 1.627h-.078c-.245.022-.482.025-.735.042-.479.032-.908.068-1.316.11-.773.078-1.427.203-1.925.451-.548.271-.857.718-.857 1.379v4.177c0 .561-.049 1.045-.152 1.485-.313 1.383-1.397 1.985-3.233 1.985-.777 0-1.478-.093-2.074-.283l-.002-.001c-.02-.015-.039-.032-.058-.049-.312-.286-.436-.709-.437-1.246v-7.912c0-.831.308-1.535.921-2.102.613-.568 1.485-.88 2.599-.88z"/>
+            </svg>
+          </div>
+          <h3>JavaScript</h3>
+          <p>Interactividad y funcionalidad</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon responsive-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <h3>Responsive</h3>
+          <p>Adaptable a cualquier dispositivo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+      <div class="contact-container">
+        <div class="contact-content">
+          <div class="section-tag">// Contacto</div>
+          <h2 class="contact-title">¿Listo para crear algo increíble?</h2>
+          <p class="contact-text">
+            Estoy disponible para nuevos proyectos y oportunidades. 
+            ¡Conectemos y hagamos realidad tu próxima idea!
+          </p>
+          
+          <div class="contact-methods">
+            <a href="mailto:camiloalvarezsena22@gmail.com" class="contact-button primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              Enviar Email
+            </a>
+            
+            <a href="tel:3134218588" class="contact-button secondary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              313 421 8588
+            </a>
+          </div>
+
+          <div class="contact-info">
+            <div class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Turbaco, Bolívar</span>
+            </div>
+            <div class="info-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span>Centro Regional SENA</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-visual">
+          <div class="visual-sphere"></div>
+          <div class="visual-ring ring-1"></div>
+          <div class="visual-ring ring-2"></div>
+          <div class="visual-ring ring-3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p class="footer-text">
+          © 2024 Camilo Alvarez. Desarrollado con pasión y dedicación.
+        </p>
+        <div class="footer-links">
+          <span>Portafolio Profesional</span>
+          <span class="separator">•</span>
+          <span>SENA Colombia</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
 </body>
 </html>
 
